@@ -21,7 +21,7 @@ int x,
     nTail,
     score;
 
-double after_ms = 600.0;
+double after_ms = 300.0;
 
 bool isGameOver;
 
@@ -183,9 +183,6 @@ void Input()
     }
 }
 
-
-//unsigned long long currentMoveTime,preMoveTime;
-
 void Logic()
 {
     int prevX = tailX[0],
@@ -204,46 +201,20 @@ void Logic()
         prevY = prev2Y;
     }
     
-    //currentMoveTime = GetTickCount64();
-    //preMoveTime = 0;
     switch (route)
     {
-    case eDirection::LEFT:
-        x--;
-        //if (after_ms <= currentMoveTime - preMoveTime)
-        //{
-           // preMoveTime = currentMoveTime;
-            //currentMoveTime = GetTickCount64();
-            
-        //}
-        break;
-    case eDirection::RIGHT:
-        x++;
-        //if (after_ms <= currentMoveTime - preMoveTime)
-       // {
-           // preMoveTime = currentMoveTime;
-            //currentMoveTime = GetTickCount64();
-            
-        //}
-        break;
-    case eDirection::UP:
-        y--;
-        //if (after_ms <= currentMoveTime - preMoveTime)
-        //{
-            //preMoveTime = currentMoveTime;
-            //currentMoveTime = GetTickCount64();
-            
-        //}
-        break;
-    case eDirection::DOWN:
-        y++;
-        //if (after_ms <= currentMoveTime - preMoveTime)
-        //{
-            //preMoveTime = currentMoveTime;
-            //currentMoveTime = GetTickCount64();
-            
-        //}
-        break;
+        case eDirection::LEFT:
+            x--;
+            break;
+        case eDirection::RIGHT:
+            x++;
+            break;
+        case eDirection::UP:
+            y--;
+            break;
+        case eDirection::DOWN:
+            y++;
+            break;
     }
 
     if (x > WIDTH || x < 0 || y > HEIGHT || y < 0)
@@ -259,15 +230,9 @@ void Logic()
 
     if (x == foodX && y == foodY)
     {
-        score++;
+        score+=10;
         NewFood();
         nTail++;
-        /*
-        if (score % 2 == 0 && score != 0)
-        {
-            if (after_ms > 20)
-                after_ms -= 20;
-            else after_ms /= 20;
-        }*/
+
     }
 }

@@ -6,22 +6,21 @@ Hand::Hand()
 	vCardsOnHand.reserve(MAX_N_CARD);
 }
 
-size_t Hand::getValue() const
+int Hand::getTotal() const
 {
 	if (vCardsOnHand.empty())
 		return 0;
-	size_t value = 0;
+	int total = 0;
 	std::vector<Card*>::const_iterator it;
-	for (it = vCardsOnHand.begin(); it != vCardsOnHand.end(); it++)
+	for (it = vCardsOnHand.begin(); it != vCardsOnHand.end(); ++it)
 	{
-		value += (*it)->getValue();
-		if ((*it)->getValue() == Card::Ace)
+		total += (*it)->getValue();
+		if ((*it)->getValue() == Card::ACE && total <= 11)
 		{
-			value += (value <= 11) ? 10 : 0;
+			total += 10;
 		}
 	}
-
-	return value;
+	return total;
 }
 
 void Hand::Add(Card* card)
@@ -31,8 +30,8 @@ void Hand::Add(Card* card)
 
 void Hand::Clear()
 {
-	std::vector<Card*>::iterator it = vCardsOnHand.begin();
-	for (; it != vCardsOnHand.end(); it++)
+	std::vector<Card*>::iterator it;
+	for (it = vCardsOnHand.begin(); it != vCardsOnHand.end(); ++it)
 	{
 		delete* it;
 		*it = nullptr;

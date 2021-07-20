@@ -8,15 +8,15 @@ class Hand
 {
 public:
 
-	const size_t MAX_N_CARD = 7; // 2 * 4, 3 * 4 + 1
+	const int MAX_N_CARD = 7; // 2 * 4, 3 * 4 + 1
 
 	Hand();
 
-	size_t getValue() const;
+	int getTotal() const;
 	void Add(Card* card);
 	void Clear();
 
-	~Hand();
+	virtual ~Hand();
 
 protected:
 	std::vector<Card*> vCardsOnHand;

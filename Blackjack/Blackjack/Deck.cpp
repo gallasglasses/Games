@@ -1,5 +1,6 @@
 #include "Deck.h"
 #include <algorithm>
+#include <random>
 
 Deck::Deck()
 {
@@ -10,9 +11,9 @@ Deck::Deck()
 void Deck::Populate()
 {
 	Clear();
-	for (int cFace = Card::Ace; cFace <= Card::King; cFace++)
+	for (int cSuit = Card::CLUBS; cSuit <= Card::SPADES; ++cSuit)
 	{
-		for (int cSuit = Card::Clubs; cSuit <= Card::Spades; cSuit++)
+		for (int cFace = Card::ACE; cFace <= Card::KING; ++cFace)
 		{
 			Add(new Card(static_cast<Card::CardFace>(cFace), static_cast<Card::CardSuit>(cSuit)));
 		}
@@ -21,11 +22,10 @@ void Deck::Populate()
 
 void Deck::Shuffle()
 {
-	for (size_t i = 0; i <= MAX_N_CARD; i++)
-	{
-		int ratioShuffle = (rand() + time(0)) % MAX_N_CARD;
-		std::shuffle(vCardsOnHand.begin(), vCardsOnHand.end(), ratioShuffle);
-	}
+	std::random_device rd;
+	std::mt19937 g(rd());
+	std::shuffle(std::begin(vCardsOnHand), std::end(vCardsOnHand), g);
+
 }
 
 void Deck::Deal(Hand& aHand)
@@ -41,15 +41,21 @@ void Deck::Deal(Hand& aHand)
 	}
 }
 
-void Deck::AdditionalCards(GenericPlayer& aGenerlcPlayer)
+void Deck::AdditionalCards(GenericPlayer& aGenericPlayer)
 {
-	while (aGenerlcPlayer.isHitting() && !aGenerlcPlayer.isBoosted())
+	while (aGenericPlayer.isHitting() && !(aGenericPlayer.isBoosted()))
 	{
-		Deal(aGenerlcPlayer);
-		std::cout << aGenerlcPlayer;
-		if (aGenerlcPlayer.isBoosted())
+		Deal(aGenericPlayer);
+		system("cls");
+		std::cout << aGenericPlayer;
+		if (aGenericPlayer.isBoosted())
 		{
-			aGenerlcPlayer.Bust();
+			break;
 		}
 	}
+}
+
+Deck::~Deck()
+{
+
 }

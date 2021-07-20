@@ -1,18 +1,23 @@
 #include "House.h"
 
-House::House(const std::string& pName)
-	: GenericPlayer("House")
+House::House(const std::string& name)
+	: GenericPlayer(name)
 {
 
 }
 
 bool House::isHitting() const
 {
-	return getValue() < 17 ? true : false;
+	return getTotal() < 17 ? true : false;
 }
 
 void House::FlipFirstCard()
 {
-	if (vCardsOnHand.empty())
+	if (!vCardsOnHand.empty())
 		vCardsOnHand[0]->FlipCard();
+}
+
+House::~House()
+{
+
 }

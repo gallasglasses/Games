@@ -1,24 +1,29 @@
 #include "Card.h"
 
-Card::Card(CardFace cFace, CardSuit cSuit, bool cardOpen)
+Card::Card(CardFace cFace, CardSuit cSuit, bool cOpen)
     : cardFace(cFace),
     cardSuit(cSuit),
-    isCardOpen(cardOpen)
+    isCardOpen(cOpen)
 {
+    
+}
 
-};
+int Card::getValue() const
+{
+    int valueCard = 0;
+    if (isCardOpen)
+    {
+        valueCard = (cardFace > 10) ? 10 : cardFace;
+    }
+    return valueCard;
+}
 
 void Card::FlipCard()
 {
     isCardOpen = !(isCardOpen);
 }
 
-size_t Card::getValue() const
+Card::~Card()
 {
-    size_t valueCard = 0;
-    if (isCardOpen)
-    {
-        return cardFace > 10 ? 10 : cardFace;
-    }
-    return 0;
+
 }

@@ -6,34 +6,16 @@ class Card
 {
 public:
     enum CardFace
-    {
-        Ace = 1,
-        Two,
-        Three,
-        Four,
-        Five,
-        Six,
-        Seven,
-        Eight,
-        Nine,
-        Ten,
-        Jack,
-        Queen,
-        King,
-    }; //rank: Ace, King, Queen, Jack, 10, 9, 8, 7, 6, 5, 4, 3, 2
+    {ACE = 1, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING}; //rank: Ace, King, Queen, Jack, 10, 9, 8, 7, 6, 5, 4, 3, 2
 
     enum CardSuit
-    {
-        Clubs,
-        Diamonds,
-        Hearts,
-        Spades
-    }; //suit: clubs, diamonds, hearts, and spades
+    {CLUBS, DIAMONDS, HEARTS, SPADES}; //suit: clubs, diamonds, hearts, and spades
 
-    Card(CardFace cFace = Two, CardSuit cSuit = Clubs, bool cOpen = true);
+    Card(CardFace cFace = ACE, CardSuit cSuit = CLUBS, bool cOpen = true);
 
+    int getValue() const;
     void FlipCard();
-    size_t getValue() const;
+    ~Card();
 
 private:
     bool isCardOpen;
@@ -43,8 +25,8 @@ private:
 
     friend std::ostream& operator<<(std::ostream& out, const Card& card)
     {
-        const std::string CardRank[] = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
-        const std::string CardSuit[] = { "\005", "\004", "\003", "\006" };
-        return (card.isCardOpen) ? (out << CardRank[card.cardFace] << " " << CardSuit[card.cardSuit]) : (out << "XX");
+        const std::string sCardRank[] = { "0", "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
+        const std::string sCardSuit[] = { "\005", "\004", "\003", "\006" };
+        return (card.isCardOpen) ? out << sCardRank[card.cardFace] << " " << sCardSuit[card.cardSuit] : out << "XX";
     }
 };

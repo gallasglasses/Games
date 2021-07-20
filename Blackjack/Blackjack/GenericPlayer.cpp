@@ -3,21 +3,17 @@
 #include <iostream>
 #include <string>
 
-GenericPlayer::GenericPlayer(const std::string& pName)
-	: playerName(pName)
+GenericPlayer::GenericPlayer(const std::string& name)
+	: playerName(name)
 {
 
 }
 
-bool GenericPlayer::isBoosted()
+bool GenericPlayer::isBoosted() const
 {
-	return getValue() > 21 ? true : false;
+	return getTotal() > 21 ? true : false;
 }
 
-void GenericPlayer::Bust() const
-{
-	std::cout << playerName << " busts with " << getValue() << " points!\n";
-}
 
 GenericPlayer::~GenericPlayer()
 {

@@ -10,6 +10,7 @@ private:
 	Deck gameDeck;
 	House gameHandHouse;
 	std::vector<Player> vGamePlayers;
+
 public:
 	Game(std::vector<std::string>& vNamePlayers);
 	void Play();

@@ -17,11 +17,13 @@ protected:
 		if (!player.vCardsOnHand.empty())
 		{
 			out << "Hand : ";
-			for (std::vector<Card*>::const_iterator it = player.vCardsOnHand.begin(); it != player.vCardsOnHand.end(); it++)
+			for (std::vector<Card*>::const_iterator it = player.vCardsOnHand.begin(); it != player.vCardsOnHand.end(); ++it)
 			{
-				out << *it << "   ";
+				out << *(*it) << "   ";
 			}
-			out << "\nPoints : " << player.getValue() << "\n";
+			out << "\nPoints : " << player.getTotal() << "\n";
+			if (player.isBoosted())
+				std::cout << player.playerName << " busts with " << player.getTotal() << " points!\n";
 		}
 		else
 		{
@@ -33,10 +35,9 @@ protected:
 public:
 	GenericPlayer(const std::string& name = "");
 
-	virtual bool isHitting();
-	bool isBoosted();
-	void Bust() const;
+	virtual bool isHitting() const = 0;
+	bool isBoosted() const;
 
-	~GenericPlayer();
+	virtual ~GenericPlayer();
 
 };

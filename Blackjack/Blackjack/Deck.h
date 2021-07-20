@@ -6,14 +6,14 @@
 class Deck : public Hand
 {
 public:
-	const size_t MAX_CARD_DECK = 52;
+	const int MAX_CARD_DECK = 52;
 
 	Deck();
 
 	void Populate();
 	void Shuffle();
 	void Deal(Hand& aHand);
-	void AdditionalCards(GenericPlayer& aGenerlcPlayer);
+	void AdditionalCards(GenericPlayer& aGenericPlayer);
 
 	virtual ~Deck();
 };

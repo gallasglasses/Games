@@ -1,3 +1,4 @@
+
 #include "Card.h"
 
 Card::Card(CardFace cFace, CardSuit cSuit, bool cOpen)

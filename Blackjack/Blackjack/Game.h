@@ -3,6 +3,11 @@
 #include "Deck.h"
 #include "Player.h"
 
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <iomanip>
+
 class Game
 {
 private:

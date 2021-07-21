@@ -42,7 +42,7 @@ void Game::Play()
 	for (it = vGamePlayers.begin(); it != vGamePlayers.end(); ++it)
 	{
 		gameDeck.AdditionalCards(*it);
-		system("cls");
+		std::cout << "\x1B[2J\x1B[H";
 		std::cout << gameHandHouse << std::endl;
 		std::cout << std::setfill('*') << std::setw(20);
 		std::cout << "\n";
@@ -54,7 +54,7 @@ void Game::Play()
 	}
 	gameHandHouse.FlipFirstCard();
 	gameDeck.AdditionalCards(gameHandHouse);
-	system("cls");
+	std::cout << "\x1B[2J\x1B[H";
 
 	std::cout << gameHandHouse << std::endl;
 	std::cout << std::setfill('*') << std::setw(30);

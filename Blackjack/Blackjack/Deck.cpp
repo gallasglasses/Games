@@ -46,7 +46,7 @@ void Deck::AdditionalCards(GenericPlayer& aGenericPlayer)
 	while (aGenericPlayer.isHitting() && !(aGenericPlayer.isBoosted()))
 	{
 		Deal(aGenericPlayer);
-		system("cls");
+		std::cout << "\x1B[2J\x1B[H";
 		std::cout << aGenericPlayer;
 		if (aGenericPlayer.isBoosted())
 		{

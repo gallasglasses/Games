@@ -21,7 +21,7 @@ int main()
         std::cout << "Play again (enter 'Y')\nNew players (enter 'N')\nQuiet (enter 'Q') : ";
         std::cin >> answer;
         isContinue = (tolower(answer) == 'y' || tolower(answer) == 'n') ? true : false;
-        system("cls");
+        std::cout << "\x1B[2J\x1B[H";
         if (tolower(answer) == 'n')
         {
             newGame.~Game();
@@ -47,7 +47,7 @@ std::vector<std::string> vGetNamePlayers()
         names.push_back(name);
         if (countPlayers == MAX_N_PLAYERS)
         {
-            system("cls");
+            std::cout << "\x1B[2J\x1B[H";
             isSetNames = false;
         }
         else
@@ -56,7 +56,7 @@ std::vector<std::string> vGetNamePlayers()
             std::cin >> answer;
             isSetNames = (tolower(answer) == 'y') ? true : false;
             if (countPlayers < MAX_N_PLAYERS && !isSetNames)
-                system("cls");
+                std::cout << "\x1B[2J\x1B[H";
         }
     }
     return names;

@@ -1,8 +1,5 @@
 #include "GenericPlayer.h"
 
-#include <iostream>
-#include <string>
-
 GenericPlayer::GenericPlayer(const std::string& name)
 	: playerName(name)
 {

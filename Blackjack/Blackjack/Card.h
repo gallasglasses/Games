@@ -6,10 +6,10 @@ class Card
 {
 public:
     enum CardFace
-    {ACE = 1, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING}; //rank: Ace, King, Queen, Jack, 10, 9, 8, 7, 6, 5, 4, 3, 2
+    {ACE = 1, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING};
 
     enum CardSuit
-    {CLUBS, DIAMONDS, HEARTS, SPADES}; //suit: clubs, diamonds, hearts, and spades
+    {CLUBS, DIAMONDS, HEARTS, SPADES};
 
     Card(CardFace cFace = ACE, CardSuit cSuit = CLUBS, bool cOpen = true);
 

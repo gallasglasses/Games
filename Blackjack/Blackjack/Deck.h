@@ -2,6 +2,8 @@
 #include "Card.h"
 #include "Hand.h"
 #include "GenericPlayer.h"
+#include <algorithm>
+#include <random>
 
 class Deck : public Hand
 {

@@ -1,10 +1,4 @@
 #include "Game.h"
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <iomanip>
-
-//#include "Deck.h"
 
 Game::Game(std::vector<std::string>& vNamePlayers)
 {

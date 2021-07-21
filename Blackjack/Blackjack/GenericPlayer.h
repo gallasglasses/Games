@@ -5,7 +5,6 @@
 #include "Card.h"
 #include "Hand.h"
 
-
 class GenericPlayer : public Hand
 {
 protected:

@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+
 #include "Game.h"
 
 const int MAX_N_PLAYERS = 6;

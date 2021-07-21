@@ -1,5 +1,4 @@
 #include "Hand.h"
-#include "Card.h"
 
 Hand::Hand()
 {
